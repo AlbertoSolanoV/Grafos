@@ -1,9 +1,6 @@
 package Clases;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Grafos<T> {
     private Map<T, List<T>> adyacencias;
@@ -44,6 +41,33 @@ public class Grafos<T> {
                 System.out.print(adyacente + " ");
             }
 
+            System.out.println();
+        }
+    }
+
+    public void imprimirGrafoMatriz() {
+        // Obtener una lista ordenada de los vértices
+        List<T> vertices = new ArrayList<>(adyacencias.keySet());
+        vertices.sort(Comparator.comparing(Object::toString));
+
+        // Imprimir encabezado de las columnas
+        System.out.print("     ");
+        for (T vertice : vertices) {
+            System.out.print(vertice + " ");
+        }
+        System.out.println();
+
+        // Imprimir filas
+        for (T vertice : vertices) {
+            System.out.print(vertice + " | ");
+
+            for (T otroVertice : vertices) {
+                if (adyacencias.get(vertice).contains(otroVertice)) {
+                    System.out.print("1 ");
+                } else {
+                    System.out.print("0 ");
+                }
+            }
             System.out.println();
         }
     }
