@@ -4,22 +4,49 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Grafos<String> grafo = new Grafos<>();
+        Scanner sn = new Scanner(System.in);
+        boolean salir = false;
+        int opcion;
+        String dato,dato2,dato1;
+        while(!salir){
 
-        grafo.agregarVertice("A");
-        grafo.agregarVertice("B");
-        grafo.agregarVertice("C");
-        grafo.agregarVertice("D");
+            System.out.println("1. Agregar vertice");
+            System.out.println("2. Agregar arista");
+            System.out.println("3. Imprimir grafo");
+            System.out.println("4. Imprimir matriz");
+            System.out.println("5. Salir");
 
-        grafo.agregarArista("A", "B");
-        grafo.agregarArista("B", "C");
-        grafo.agregarArista("C", "D");
-        grafo.agregarArista("D", "C");
+            System.out.println("Escribe una de las opciones");
+            opcion = sn.nextInt();
 
-        grafo.imprimirGrafo();
+            switch(opcion){
+                case 1:
+                    System.out.println("Escribe el nombre del vertice");
+                    dato = sn.next();
+                    grafo.agregarVertice(dato);
+                    break;
+                case 2:
+                    System.out.println("Escribe el nombre del vertice A");
+                    dato1 = sn.next();
+                    System.out.println("Escribe el nombre del vertice B");
+                    dato2 = sn.next();
+                    grafo.agregarArista(dato1, dato2);
+                    break;
+                case 3:
+                    grafo.imprimirGrafo();
+                    break;
+                case 4:
+                    grafo.imprimirGrafoMatriz();
+                    break;
+                case 5:
+                    salir=true;
+                    break;
+                default:
+                    System.out.println("Solo números entre 1 y 5");
+            }
 
-        List<String> adyacentes = grafo.obtenerAdyacentes("A");
-        System.out.println("Adyacentes de 2: " + adyacentes);
-        grafo.imprimirGrafoMatriz();
+        }
+
     }
 }
 

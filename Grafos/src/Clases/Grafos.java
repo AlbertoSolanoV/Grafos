@@ -19,7 +19,7 @@ public class Grafos<T> {
         }
 
         adyacencias.get(origen).add(destino);
-        adyacencias.get(destino).add(origen); // En caso de ser un grafo no dirigido
+        adyacencias.get(destino).add(origen);
     }
 
     public List<T> obtenerAdyacentes(T vertice) {
@@ -46,18 +46,16 @@ public class Grafos<T> {
     }
 
     public void imprimirGrafoMatriz() {
-        // Obtener una lista ordenada de los vértices
         List<T> vertices = new ArrayList<>(adyacencias.keySet());
         vertices.sort(Comparator.comparing(Object::toString));
 
-        // Imprimir encabezado de las columnas
+
         System.out.print("     ");
         for (T vertice : vertices) {
             System.out.print(vertice + " ");
         }
         System.out.println();
 
-        // Imprimir filas
         for (T vertice : vertices) {
             System.out.print(vertice + " | ");
 
